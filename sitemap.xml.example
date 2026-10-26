@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Шаблон карты сайта. Файл назван sitemap.xml.example, чтобы не выложиться
+  с чужим доменом по ошибке.
+
+  Как включить:
+  1. Переименовать в sitemap.xml.
+  2. Заменить https://example-domain.ru на реальный домен (6 раз).
+  3. Раскомментировать строку Sitemap в robots.txt.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://example-domain.ru/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://example-domain.ru/zapchasi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://example-domain.ru/kak-my-rabotaem/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://example-domain.ru/dostavka-i-oplata/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://example-domain.ru/o-kompanii/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://example-domain.ru/kontakty/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
