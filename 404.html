@@ -7,12 +7,6 @@
 <meta name="description" content="Страница не найдена. Подбор и поставка запчастей к сельхозтехнике в Ставрополе: главная, запчасти, контакты.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#123c22">
-<link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon/favicon-192.png">
-<link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,13 +18,23 @@
   на собственном домене — в корне. В разметке остаются «чистые» пути от корня —
   они верны для домена и для случая с выключенным JavaScript (см. <noscript>).
 -->
-<noscript><link rel="stylesheet" href="/assets/css/styles.css"></noscript>
+<noscript>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+</noscript>
 <script>
   window.SITE_BASE = (function () {
     var seg = location.pathname.split('/')[1];
     return /(^|\.)github\.io$/i.test(location.hostname) && seg ? '/' + seg + '/' : '/';
   })();
-  document.write('<link rel="stylesheet" href="' + window.SITE_BASE + 'assets/css/styles.css">');
+  document.write(
+    '<link rel="stylesheet" href="' + window.SITE_BASE + 'assets/css/styles.css">' +
+    '<link rel="icon" href="' + window.SITE_BASE + 'favicon/favicon.svg" type="image/svg+xml">' +
+    '<link rel="icon" href="' + window.SITE_BASE + 'favicon/favicon.ico" sizes="any">' +
+    '<link rel="apple-touch-icon" href="' + window.SITE_BASE + 'favicon/apple-touch-icon.png">'
+  );
 </script>
 </head>
 <body>
