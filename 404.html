@@ -16,7 +16,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/styles.css">
+
+<!--
+  Эта страница отдаётся для ЛЮБОГО несуществующего адреса, поэтому относительные
+  пути к ресурсам не работают (глубина адреса неизвестна). Путь до корня сайта
+  вычисляется по имени хоста: на GitHub Pages сайт живёт в подпапке /<репозиторий>/,
+  на собственном домене — в корне. В разметке остаются «чистые» пути от корня —
+  они верны для домена и для случая с выключенным JavaScript (см. <noscript>).
+-->
+<noscript><link rel="stylesheet" href="/assets/css/styles.css"></noscript>
+<script>
+  window.SITE_BASE = (function () {
+    var seg = location.pathname.split('/')[1];
+    return /(^|\.)github\.io$/i.test(location.hostname) && seg ? '/' + seg + '/' : '/';
+  })();
+  document.write('<link rel="stylesheet" href="' + window.SITE_BASE + 'assets/css/styles.css">');
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -141,6 +156,26 @@
 </footer>
 
 <a class="btn btn--primary floating-call" href="tel:+79624474717">Позвонить</a>
-<script src="/assets/js/main.js"></script>
+
+<script>
+  /* Приводим пути от корня к фактическому размещению сайта
+     (на GitHub Pages добавляется префикс /<репозиторий>/). */
+  (function () {
+    var base = window.SITE_BASE || '/';
+    if (base !== '/') {
+      var nodes = document.querySelectorAll('link[href^="/"], a[href^="/"]');
+      for (var i = 0; i < nodes.length; i++) {
+        var attr = nodes[i].getAttribute('href');
+        /* уже корректный путь (например, стили, подключённые выше) не трогаем —
+           иначе смена href заставит браузер перечитать таблицу стилей по битому адресу */
+        if (attr.indexOf(base) === 0) continue;
+        nodes[i].href = base + attr.slice(1);
+      }
+    }
+    var s = document.createElement('script');
+    s.src = base + 'assets/js/main.js';
+    document.body.appendChild(s);
+  })();
+</script>
 </body>
 </html>
